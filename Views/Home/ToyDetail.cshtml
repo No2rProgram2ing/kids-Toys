@@ -1,0 +1,209 @@
+﻿@using Kids_Toys.ModelViews
+
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Toy Details";
+}
+
+@model CategoryToyMV
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    h1 {
+        margin: 0;
+    }
+    .popup {
+        display: none;
+        border: 6px solid #6FB2C3;
+        padding: 2em;
+        width: 400px;
+        background: #fff;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        flex-direction: column;
+        text-align: left;
+    }
+
+
+    .formBtn {
+        width: 140px;
+        display: inline;
+        background: #6FB2C3;
+        color: #fff;
+        font-weight: 100;
+        font-size: 1.2em;
+        border: none;
+        height: 30px;
+    }
+
+    .show {
+        display: flex;
+        opacity: 1;
+    }
+
+</style>
+
+<!-- Start breadcrumb -->
+<div class="info mt-3 mb-3 me-0">
+    <div class="container  d-flex align-items-center justify-content-between">
+        <div class="icon">
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+            </a>
+        </div>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item active text-capitalize" aria-current="page">@Model.ToyDetail.Name</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- End breadcrumb -->
+
+<!-- Start Toy Detail -->
+<div class="toy-detail mx-auto my-5 text-center">
+    <div class="container">
+        <div class="image">
+            <img src="@Model.ToyDetail.Image" alt="">
+        </div>
+        <div class="name mx-auto  my-3 text-center">
+            <p class="fw-bold text-uppercase">@Model.ToyDetail.Name</p>
+        </div>
+        <div class="paragraph my-5">
+            <p>@Model.ToyDetail.Description</p>
+        </div>
+
+        @if (@Model.ToyDetail.Status == true)
+        {
+            <p class="available fw-bold">Available</p>
+        }
+        else
+        {
+            <p class="notAvailable fw-bold">Not Available</p>
+        }
+
+        <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star no"></i>
+            <i class="fa-solid fa-star no"></i>
+        </div>
+    </div>
+</div>
+<!-- End Toy Detail -->
+<!-- Start Comment Section-->
+<div class="Comment pb-5 mt-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center justify-content-md-between">
+            <div class="col col-10 col-md-4 col-lg-3 mb-4 mb-lg-0">
+                <a class="d-block addComment" onclick="togglePopupOrder()">Leave a Comment</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Start Add Comment*@
+<div id="addComment" class="popup">
+    <input type="hidden" id="toyId" class="form-control" value="@Model.ToyDetail.Id" required />
+    <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea id="comment" class="form-control" placeholder="Leave a Comment" rows="3"></textarea>
+    </div>
+    <input type="hidden" id="Status" class="form-control" value="1" required />
+    <div>
+        <input class="formBtn" type="submit" onclick="AddNewComment()" value="Submit" />
+        <input class="formBtn" type="reset" value="Reset" />
+    </div>
+</div>
+@*End Add Comment*@
+
+
+<div class="testimonials mt-5 pb-5">
+    <div class="container">
+        <p class="mb-4"><a href="#">Testimonials</a></p>
+        <div class="row justify-content-center justify-content-md-between">
+                @if (@Model.Comments != null && @Model.Comments.Any())
+                {
+                   @foreach (var comment in @Model.Comments)
+                    {
+                    <div class="col col-10 col-md-4 col-lg-3 mb-4 mb-lg-0">
+                        <div class="testi-box p-4 ">
+                            <p class="pb-3">@comment.ToyComment</p>
+                            <div class="account d-flex justify-content-start align-items-center">
+                                <div class="image me-3">
+                                    <img src="~/user/Images/user.jpg" alt="">
+                                </div>
+                                <div class="user">
+                                    <p class="name mb-0">Asma'a Ali</p>
+                                    <p class="username mb-0">@comment.UpdatedAt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else {
+                <p style="color:#707070;">There is no comments to show</p>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- Start Comment Section-->
+@section Scripts {
+<script>
+    // Start Add Comment
+         function togglePopupOrder() {
+               const AddComment = document.getElementById('addComment');
+               AddComment.classList.toggle('show');
+        }
+
+
+       function AddNewComment() {
+            const toyId = document.getElementById('toyId').value;
+            const comment = document.getElementById('comment').value;
+            const Status = document.getElementById('Status').value;
+
+        const formData = new FormData
+        formData.append("ToyId", toyId);
+        formData.append("ToyComment", comment);
+        formData.append("Status", Status);
+
+
+            fetch('/Home/AddComment', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+                if (response.status === 401) {
+                alert("You must be logged in to leave a comment.");
+                window.location.href = "/Identity/Account/Login"; 
+                return;
+            }
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupOrder();
+            location.reload();
+            alert("It is successful");
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Edit Cart
+</script>
+}

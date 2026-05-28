@@ -1,0 +1,393 @@
+﻿@using Kids_Toys.Models
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Show All Toys";
+}
+@{
+    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+}
+@model List<Toy>
+
+
+@* Show All Toys *@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Toy List</h2>
+        <a class="btn btn-primary text-center" role="button" onclick="togglePopupAdd()">Add Toy</a>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>ToyName</th>
+                <th>ToyImage</th>
+                <th>ToyPrice</th>
+                <th>Toy Discount</th>
+                <th>Toy Category</th>
+                <th>Toy Description</th>
+                <th>Toy Status</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th style="width:20%;">Manage Toys</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                string formattedCreatedAt = @item.CreatedAt.ToString("yyyy-MM-ddTHH:mm:ss");
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Image</td>
+                    <td>@item.Price</td>
+                    <td>@item.Discount</td>
+                    <td>@item.Category.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Status</td>
+                    <td>@item.CreatedAt</td>
+                    <td>@item.UpdatedAt</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" onclick="togglePopupEdit(@item.Id)">Edit</a>
+                        @*Start Edit Toy*@
+                        <div id="ToyEdit_@item.Id" class="popup">
+                            <form method="post" enctype="multipart/form-data">
+                                <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" readonly required>
+                                <div class="mb-3">
+                                    <label for="editToyName_@item.Id" class="form-label">Toy Name</label>
+                                    <input type="text" id="editToyName_@item.Id" class="form-control" asp-for="@item.Name" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editToyCategoryId_@item.Id" class="form-label">Toy's Category</label>
+                                    <select type="text" id="editToyCategoryId_@item.Id" class="form-select" asp-for="@item.CategoryId" data-current-parent="@item.CategoryId" required>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editToyImage_@item.Id" class="form-label">Toy Image</label>
+                                    <input type="file" id="editToyImage_@item.Id" class="form-control" required />
+                                </div>
+                                <input type="hidden" value="@item.Image" name="ToyImagePath_@item.Id" />
+                                <div class="mb-3">
+                                    <label for="editToyPrice_@item.Id" class="form-label">Toy Price</label>
+                                    <input type="text" id="editToyPrice_@item.Id" class="form-control" asp-for="@item.Price" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editToyDiscount_@item.Id" class="form-label">Toy Discount</label>
+                                    <input type="text" id="editToyDiscount_@item.Id" class="form-control" asp-for="@item.Discount" />
+                                </div>
+                                <div class="mb-3" id="editToyStatus_@item.Id">
+                                    <p class="mb-0">Is Toy Available</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="editStatus_@item.Id" value="true" @(@item.Status == true ? "checked" : "") id="editToyAvailable_@item.Id" />
+                                        <label class="form-check-label" for="editToyAvailable_@item.Id">Available</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="editStatus_@item.Id" id="editToyNotAvailable_@item.Id" value="false" @(@item.Status == false ? "checked" : "") />
+                                        <label class="form-check-label" for="editToyNotAvailable_@item.Id">Not Available</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editToyDescription_@item.Id" class="form-label">Toy Description</label>
+                                    <textarea class="form-control" id="editToyDescription_@item.Id" asp-for="@item.Description"></textarea>
+                                </div>
+                                <input type="hidden" id="CreatedAt_@item.Id" value="@formattedCreatedAt" required readonly />
+                                <input class="formBtn" onclick="EditToy(event,@item.Id)" type="submit" value="Submit" />
+                                <input class="formBtn" type="reset" value="Reset" />
+                            </form>
+                        </div>
+                        @*End Edit Toy*@
+
+                        <a class="btn btn-danger" role="button" onclick="togglePopupDel(@item.Id)"> Delete</a>
+                        @*Start Delete Toy*@
+                        <div id="ToyDelete_@item.Id" class="popup">
+                            <div>
+                                <p style="padding:10px">Are you Sure that you want to delete @item.Name</p>
+                                <input type="hidden" asp-for="@item.Id" name="Id" id="ID_@item.Id" readonly required>
+                                <input type="hidden" value="@item.Image" name="DelImagePath_@item.Id" />
+                                <input class="formBtn ms-0" onclick="DeleteToy(@item.Id)" type="submit" value="Submit">
+                                <input class="formBtn me-0" type="reset" value="Reset">
+                            </div>
+                        </div>
+                        @*End Delete Toy*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@*Start Add Toy*@
+<div id="ToyAdd" class="popup">
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" id="ToyID" value="0" required />
+        <div class="mb-3">
+            <label for="ToyName" class="form-label">Toy Name</label>
+            <input type="text" id="ToyName" class="form-control" placeholder="Toy Name" required />
+        </div>
+        <div class="mb-3">
+            <label for="ToyCategory" class="form-label">Toy Category</label>
+            <select type="text" id="ToyCategory" class="form-select" placeholder="Toy Category" data-current-parent="" >
+                <option value="">Select a Category</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="ToyImage" class="form-label">Toy Image</label>
+            <input type="file" id="ToyImage" class="form-control" placeholder="choose a Toy/'s Image" required />
+        </div>
+        <div class="mb-3">
+            <label for="ToyPrice" class="form-label">Toy Price</label>
+            <input type="text" id="ToyPrice" class="form-control" placeholder="Toy Price" required />
+        </div>
+        <div class="mb-3">
+            <label for="ToyDiscount" class="form-label">Toy Discount</label>
+            <input type="text" id="ToyDiscount" class="form-control" placeholder="Toy Discount" />
+        </div>
+        <div class="mb-3" id="toyStatus">
+            <p class="mb-0">Is Toy Available</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Status" id="ToyAvailable" value="true" checked />
+                <label class="form-check-label" for="ToyAvailable">Available</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="false" name="Status" id="ToyNotAvailable" />
+                <label class="form-check-label" for="ToyNotAvailable">Not Available</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="ToyDescription" class="form-label">Toy Description</label>
+            <textarea class="form-control" id="ToyDescription" placeholder="Describe the Toy"></textarea>
+        </div>
+        <div>
+            <input class="formBtn" onclick="AddNewToy(event)" type="submit" value="Submit" />
+            <input class="formBtn" type="reset" value="Reset" />
+        </div>
+    </form>
+</div>
+@*End Add Toy*@
+
+
+@section Scripts {
+<script>
+        // Start Add Toy
+         function togglePopupAdd() {
+              const ToyAdd = document.getElementById('ToyAdd');
+              ToyAdd.classList.toggle('show');
+          }
+
+           function AddNewToy(e) {
+            e.preventDefault();
+            const Id = document.getElementById('ToyID').value;
+            const Name = document.getElementById('ToyName').value;
+            const CategoryId = document.getElementById('ToyCategory').value;
+            const Image = document.getElementById('ToyImage').files[0];
+            const Price = document.getElementById('ToyPrice').value;
+            const Discount = document.getElementById('ToyDiscount').value;
+            const Description = document.getElementById('ToyDescription').value;
+            const statusValue = document.querySelector('input[name="Status"]:checked').value === "true";
+
+                const formData = new FormData();
+
+                formData.append("Id", Id);
+                formData.append("Name", Name);
+                formData.append("CategoryId", CategoryId);
+                formData.append("Price", Price);
+                formData.append("Discount", Discount);
+                formData.append("Status", statusValue);
+                formData.append("Description", Description);
+                if(Image) {
+                     formData.append("Image", Image);
+                }
+                formData.append("ImagePath", null);
+
+                fetch('/Admin/ManageToys', {
+                method: 'POST',
+                body: formData
+            })
+
+                .then(async response => {
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(errorText);
+                    }
+                    togglePopupAdd();
+                    location.reload();
+                    alert("It is successful");
+                        })
+                        .catch(err => {
+                            console.error('تفاصيل الخطأ:', err.message);
+                            alert('حدث خطأ: ' + err.message);
+                        })
+            }
+
+            // End Add Toy
+
+            // Start Edit Toy
+
+            function togglePopupEdit(id) {
+                   const ToyEdit = document.getElementById('ToyEdit_' + id);
+                   ToyEdit.classList.toggle('show');
+            }
+
+
+           function EditToy(e,id) {
+                e.preventDefault();
+                const Id = document.getElementById('ID_' + id).value;
+                const Name = document.getElementById('editToyName_' + id).value;
+                const CategoryId = document.getElementById('editToyCategoryId_' + id).value;
+                const Price = document.getElementById('editToyPrice_' + id).value;
+                const Discount = document.getElementById('editToyDiscount_' + id).value;
+                const Image = document.getElementById('editToyImage_' + id).files[0];
+                const Description = document.getElementById('editToyDescription_' + id).value;
+                const statusValue = document.querySelector('input[name="editStatus_' + id + '"]:checked').value === "true";
+                const imagePath = document.querySelector('input[name="ToyImagePath_' + id + '"]').value;
+                const CreatedAt = document.getElementById('CreatedAt_' + id).value;
+
+
+            const formData = new FormData();
+            formData.append("Id", Id);
+            formData.append("Name", Name);
+            formData.append("CategoryId", CategoryId);
+            formData.append("Price", Price);
+            formData.append("Discount", Discount);
+            formData.append("Status", statusValue);
+            formData.append("Image", Image);
+            formData.append("ImagePath", imagePath);
+            formData.append("Description", Description);
+            formData.append("CreatedAt", CreatedAt);
+
+
+            fetch('/Admin/ManageToys', {
+            method: 'POST',
+            body: formData
+            })
+                        .then(async response => {
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(errorText);
+                    }
+                    togglePopupEdit(id);
+                    location.reload();
+                    alert("It is successful");
+                        })
+                        .catch(err => {
+                            console.error('تفاصيل الخطأ:', err.message);
+                            alert('حدث خطأ: ' + err.message);
+                        })
+            }
+
+            // End Edit Toy
+
+
+
+
+            // Start Delete Toy
+
+            function togglePopupDel(id) {
+                const ToyDelete = document.getElementById('ToyDelete_' + id);
+                ToyDelete.classList.toggle('show');
+            }
+
+            function DeleteToy(id) {
+
+            const formData = new FormData
+
+            formData.append("Id", id);
+            formData.append("ImagePath", document.querySelector('input[name="DelImagePath_' + id + '"]').value);
+
+            fetch('/Admin/DeleteToy', {
+                method: 'POST',
+               body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                togglePopupDel(id);
+                location.reload();
+                alert("It is successful");
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Delete Toy
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Admin/GetCategories")
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById("ToyCategory");
+
+                const buildOptions = (select, parentId, prefix = "", depth = 0) => {
+                    data.filter(c => c.parentId === parentId).forEach(c => {
+                        const option = document.createElement("option");
+                        option.value = c.id;
+                        option.text = prefix + c.name;
+
+                        if (depth < 2) {
+                            option.disabled = true;
+                        }
+
+                        select.appendChild(option);
+
+                        buildOptions(select, c.id, prefix + "— ", depth + 1);
+                    });
+                };
+
+                buildOptions(select, null);
+            })
+            .catch(error => {
+                console.error("خطأ أثناء تحميل التصنيفات:", error);
+            });
+    });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Admin/GetCategories")
+            .then(response => response.json())
+            .then(data => {
+                const selectElements = document.querySelectorAll("select[id^='editToyCategoryId_']");
+
+                const buildOptions = (select, parentId, prefix = "", depth = 0) => {
+                    data.filter(c => c.parentId === parentId).forEach(c => {
+                        const option = document.createElement("option");
+                        option.value = c.id;
+                        option.text = prefix + c.name;
+
+                        if (depth < 2) {
+                            option.disabled = true; 
+                        }
+
+                        select.appendChild(option);
+
+                        buildOptions(select, c.id, prefix + "— ", depth + 1);
+                    });
+                };
+
+                selectElements.forEach(select => {
+                    buildOptions(select, null); 
+
+                    const currentValue = select.getAttribute("data-current-parent");
+                    if (currentValue) {
+                        select.value = currentValue;
+                    }
+                });
+            });
+    });
+
+
+ 
+
+</script>
+
+}
+
+

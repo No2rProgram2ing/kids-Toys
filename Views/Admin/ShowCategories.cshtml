@@ -1,0 +1,300 @@
+﻿@using Kids_Toys.Models
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Show All Categories";
+}
+@{
+    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+}
+@model List<Category>
+
+@* Show All Categories *@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Category List</h2>
+        <a class="btn btn-primary text-center" role="button" onclick="togglePopupAdd()">Add Category</a>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Category Name</th>
+                <th>Category Image</th>
+                <th>Category Parent Id</th>
+                <th>Category Description</th>
+                <th>Category's Status</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th style="width:20%;">Manage Categories</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                string formattedCreatedAt = @item.CreatedAt.ToString("yyyy-MM-ddTHH:mm:ss");
+
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Image</td>
+                    <td>@item.ParentId</td>
+                    <td>@item.Description</td>
+                    <td>@item.StatusCat</td>
+                    <td>@item.CreatedAt</td>
+                    <td>@item.UpdatedAt</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" onclick="togglePopupEdit(@item.Id)">Edit</a> |
+                        @*Start Edit Category*@
+                        <div id="categoryEdit_@item.Id" class="popup">
+                            <form method="post" enctype="multipart/form-data">
+                                <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" required readonly>
+                                @if(@item.ParentId == null)
+                                {
+                                    <div class="mb-3">
+                                        <label for="editCategoryName_@item.Id" class="form-label">Category Name</label>
+                                        <input type="text" id="editCategoryName_@item.Id" class="form-control" asp-for="@item.Name" required/>
+                                    </div>
+                                }
+                                else
+                                {
+                                        <input type="hidden" id="editCategoryName_@item.Id" class="form-control" asp-for="@item.Name" required readonly />                                    
+                                }
+                                <input type="hidden" id="editCategoryParent_@item.Id" asp-for="@item.ParentId" required readonly />
+                                <div class="mb-3">
+                                    <label for="editCategoryImage_@item.Id" class="form-label">Category Image</label>
+                                    <input type="file" id="editCategoryImage_@item.Id" class="form-control"  />
+                                </div>
+                                <input type="hidden" value="@item.Image" name="ImagePath_@item.Id" />
+                                <div class="mb-3" id="editCategoryStatus_@item.Id">
+                                    <p class="mb-0">Is Category Available</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="editStatusCat_@item.Id" value="true" @(@item.StatusCat == true ? "checked" : "") id="editCategoryAvailable_@item.Id"/>
+                                        <label class="form-check-label" for="editCategoryAvailable_@item.Id">Available</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="editStatusCat_@item.Id"  value="false"  @(@item.StatusCat == false ? "checked" : "") id="editCategoryNotAvailable_@item.Id"/>
+                                        <label class="form-check-label" for="editCategoryNotAvailable_@item.Id" >Not Available</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editCategoryDescription_@item.Id" class="form-label">Category Description</label>
+                                    <textarea class="form-control" id="editCategoryDescription_@item.Id" asp-for="@item.Description"></textarea>
+                                </div>
+                                <input type="hidden" id="CreatedAt_@item.Id" value="@formattedCreatedAt" required />
+
+                                <input class="formBtn" onclick="EditCategory(event,@item.Id)" type="submit" value="Submit" />
+                                <input class="formBtn " type="reset" value="Reset">
+                            </form>
+                        </div>
+                        @*End Edit Category*@
+
+                        <a class="btn btn-danger" role="button" onclick="togglePopupDel(@item.Id)"> Delete</a>
+                        @*Start Delete Category*@
+                        <div id="categoryDelete_@item.Id" class="popup">
+                            <div>
+                                <p style="padding:10px">Are you Sure that you want to delete @item.Name</p>
+                                <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" readonly>
+                                <input type="hidden" value="@item.Image" name="DelImagePath_@item.Id" />
+                                <input class="formBtn" onclick="DeleteCategory(@item.Id)" type="submit" value="Submit">
+                                <input class="formBtn " type="reset" value="Reset">
+                            </div>
+                        </div>
+                        @*End Delete Category*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@*Start Add Category*@
+<div id="categoryAdd" class="popup">
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" id="categoryID" class="form-control" value="0" required />
+        <div class="mb-3">
+            <label for="categoryName" class="form-label">Category Name</label>
+            <input type="text" id="categoryName" class="form-control" placeholder="Category Name" required />
+        </div>
+        <div class="mb-3">
+            <label for="categoryImage" class="form-label">Category Image</label>
+            <input type="file" id="categoryImage" class="form-control" placeholder="choose a category/'s Image" />
+        </div>
+        <div class="mb-3" id="categoryStatus">
+            <p class="mb-0">Is Category Available</p>
+            <div class="form-check">
+                <input class="form-check-input" name="StatusCat" type="radio" id="CategoryAvailable" value="true" checked />
+                <label class="form-check-label" for="CategoryAvailable">Available</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="StatusCat" type="radio" value="false" id="CategoryNotAvailable" />
+                <label class="form-check-label" for="CategoryNotAvailable">Not Available</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="categoryDescription" class="form-label">Category Description</label>
+            <textarea class="form-control" id="categoryDescription"  placeholder="Describe the Category"></textarea>
+        </div>
+
+        <div>
+            <input class="formBtn" type="submit" onclick="AddNewCategory(event)" value="Submit" />
+            <input class="formBtn" type="reset" value="Reset" />
+        </div>
+    </form>
+</div>
+@*End Add Category*@
+
+
+@section Scripts {
+<script>
+        // Start Add Category
+         function togglePopupAdd() {
+          const categoryAdd = document.getElementById('categoryAdd');
+          categoryAdd.classList.toggle('show');
+          }
+
+
+           function AddNewCategory(e) {
+               e.preventDefault();
+            const id = document.getElementById('categoryID').value;
+            const name = document.getElementById('categoryName').value;
+            const image = document.getElementById('categoryImage').files[0];
+            const description = document.getElementById('categoryDescription').value;
+            const statusValue = document.querySelector('input[name="StatusCat"]:checked').value === "true";
+
+                const formData = new FormData
+
+                formData.append("Id", id);
+                formData.append("Name", name);
+                formData.append("ParentId", "");
+                if(image) {
+                    formData.append("Image", image);
+                }
+                formData.append("ImagePath", null);
+                formData.append("Description", description);
+                formData.append("StatusCat", statusValue);
+
+
+                fetch('/Admin/ManageCategories', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async response => {
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText);
+                }
+                togglePopupAdd();
+                location.reload();
+                alert("It is successful");
+                    })
+                    .catch(err => {
+                        console.error('تفاصيل الخطأ:', err.message);
+                        alert('حدث خطأ: ' + err.message);
+                    })
+
+            }
+
+
+     // Start Edit Category
+
+            function togglePopupEdit(id) {
+                   const categoryEdit = document.getElementById('categoryEdit_' + id);
+                   categoryEdit.classList.toggle('show');
+            }
+
+
+           function EditCategory(e,id) {
+                e.preventDefault();
+                const Name = document.getElementById('editCategoryName_' + id).value;
+                const ParentId = document.getElementById('editCategoryParent_' + id).value;
+                const Image = document.getElementById('editCategoryImage_' + id).files[0];
+                const Description = document.getElementById('editCategoryDescription_' + id).value;
+                const CreatedAt = document.getElementById('CreatedAt_' + id).value;
+                const statusCatValue = document.querySelector('input[name="editStatusCat_' + id + '"]:checked').value === "true";
+                const imagePath = document.querySelector('input[name="ImagePath_' + id + '"]').value;
+
+
+            const formData = new FormData();
+
+            formData.append("Id", id);
+            formData.append("Name", Name);
+            formData.append("ParentId", ParentId);
+            formData.append("Image", Image);
+            formData.append("Description", Description);
+            formData.append("StatusCat", statusCatValue);
+            formData.append("CreatedAt", CreatedAt);
+            formData.append("ImagePath", imagePath);
+
+
+                fetch('/Admin/ManageCategories', {
+                method: 'POST',
+                body: formData
+            })
+              .then(async response => {
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText);
+                }
+                togglePopupAdd();
+                location.reload();
+                alert("It is successful");
+                    })
+                    .catch(err => {
+                        console.error('تفاصيل الخطأ:', err.message);
+                        alert('حدث خطأ: ' + err.message);
+                    })
+            }
+
+            // End Edit Category
+
+
+            // Start Delete Category
+
+            function togglePopupDel(id) {
+                const categoryDelete = document.getElementById('categoryDelete_' + id);
+                categoryDelete.classList.toggle('show');
+            }
+
+            function DeleteCategory(id) {
+
+            const formData = new FormData
+            formData.append("Id", id);
+            formData.append("ImagePath", document.querySelector('input[name="DelImagePath_' + id + '"]').value);
+
+
+            fetch('/Admin/DeleteCategory', {
+                method: 'POST',
+               body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                togglePopupDel(id);
+                location.reload();
+                alert("It is successful");
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Delete Category
+
+</script>
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+﻿@using Kids_Toys.ModelViews
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "All New Toies";
+}
+@model CategoryToyMV
+
+    <!-- Start breadcrumb -->
+    <div class="info mt-3 mb-3 me-0">
+        <div class="container  d-flex align-items-center justify-content-between">
+            <div class="icon">
+                <a href="../HTML/index.html">
+                    <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+                </a>
+            </div>
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller= "Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">New</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- End breadcrumb -->
+
+
+
+    <!-- Start header-Section -->
+    <div class="header-section mt-5 mx-auto">
+        <div class="container">
+            <div class="header-box position-relative mx-auto">
+                <p>New</p>
+                <span class="position-absolute mt-2"></span>
+            </div>
+            <div class="header-desc">
+                <p>Discover All New Toies Which we Have, Donot Waste the Chance. </p>
+            </div>
+        </div>
+    </div>
+    <!-- End header-Section -->
+
+
+
+  <!-- Start Girls -->
+  <div class="girls mt-5 py-5">
+    <div class="container">
+            <div class="row justify-content-between gap-4">
+            @foreach(var toy in @Model.AllNew)
+            {
+               <div class="col col-5 col-md-3 col-lg-2 mb-5 pb-4">
+                <div class="box-toy position-relative">
+                  <div class="image">
+                    <img src="@toy.Image" alt="...">
+                  </div>
+                  <div class="box-toy-detail p-2">
+                      <a asp-controller="Home" asp-action="ToyDetail" asp-route-id="@toy.Id"><p class="mb-0">@toy.Name</p></a>
+                    <div class="icons d-flex justify-content-between mt-2">
+                      <span class="fw-bold">@toy.Price $</span>
+                      <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                  </div>
+                        <a class="position-absolute d-block button @(@toy.Status == true ? "" : "notAvailable")" onclick="@(@toy.Status == true ? "AddToCart(" + @toy.Id + ")" : "")" >Add to Cart</a>
+                </div>
+              </div>
+            }
+            </div>
+    </div>
+  </div>
+  <!-- End Girls -->
+
+

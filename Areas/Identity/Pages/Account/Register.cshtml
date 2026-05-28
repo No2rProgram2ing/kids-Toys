@@ -1,0 +1,44 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+        <div class="registeration">
+        <div class="container gx-0">
+            <div class="registeration-form ">
+                <div class="box-form box-form-sign-up">
+                    <i class="fa-solid fa-circle-arrow-left"></i>
+                    <i class="fa-solid fa-user"></i>
+                    <h3 class="fw-bold">Sign Up</h3>
+                </div>
+                <form class="form sign-up"  id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="email" class="form-control mt-3 mt-md-0" placeholder="Enter your Email" asp-for="Input.Email" aria-required="true">
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                    <input type="text" class="form-control mt-3 mt-md-3 mt-lg-2" placeholder="Enter your UserName" asp-for="Input.UserName" aria-required="true">
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+
+                    <input type="password" class="form-control mt-3 mt-md-3 mt-lg-2" placeholder="Enter your Password" asp-for="Input.Password" aria-required="true">
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                    <input type="password" class="form-control mt-3 mt-md-3 mt-lg-2" placeholder="Confirm Password"  asp-for="Input.ConfirmPassword"  aria-required="true">
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+
+                    <button id="registerSubmit"  class="registeration-button mt-3 mt-md-3 mt-lg-2 fw-bold" type="submit">Sign Up</button>
+                    <div class="register text-center mt-3 mt-md-3 mt-lg-2">
+                        <p class="">Already Have an Account Yet?</p>
+                        <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class="fw-bold">LOG IN</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

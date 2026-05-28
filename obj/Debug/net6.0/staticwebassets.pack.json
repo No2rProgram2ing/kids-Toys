@@ -1,0 +1,625 @@
+{
+  "Files": [
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Kids Toys.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Kids Toys.r90rs9fvmu.bundle.scp.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\07abbce9-795d-47ad-a6ac-f20758b8f72a.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\07abbce9-795d-47ad-a6ac-f20758b8f72a.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\1024fa0e-9598-4af6-a577-cd30e545ab22.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\1024fa0e-9598-4af6-a577-cd30e545ab22.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\16b1e1d4-c5dd-4046-8561-9bc67df15d85.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\16b1e1d4-c5dd-4046-8561-9bc67df15d85.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\1943dcc2-77a8-48ff-8d59-86845a5e4a5c.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\1943dcc2-77a8-48ff-8d59-86845a5e4a5c.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\1d3cbd17-70d4-470d-b403-febc77c18662.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\1d3cbd17-70d4-470d-b403-febc77c18662.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\221617ee-426b-4e8f-a8d6-6111cdd4d612.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\221617ee-426b-4e8f-a8d6-6111cdd4d612.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\3f760371-608b-4f5b-bb5b-d6e864aae4b4.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\3f760371-608b-4f5b-bb5b-d6e864aae4b4.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\65685a45-27d7-44e0-9000-389df4f27044.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\65685a45-27d7-44e0-9000-389df4f27044.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\9a0d2f57-8b6e-4478-a084-178c187b12c5.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\9a0d2f57-8b6e-4478-a084-178c187b12c5.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\a9268c29-0605-45df-b3b2-a7bf99adb0e2.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\a9268c29-0605-45df-b3b2-a7bf99adb0e2.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\aaf265e4-0b25-4311-aea8-c078ae06b9a1.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\aaf265e4-0b25-4311-aea8-c078ae06b9a1.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\c639e8da-9280-4629-a740-45904bb1bdc6.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\c639e8da-9280-4629-a740-45904bb1bdc6.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\c6aae535-0daf-4d06-81e7-35350eb83203.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\c6aae535-0daf-4d06-81e7-35350eb83203.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\e03d7ae9-5b91-4598-9cbc-0f6003aac919.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\e03d7ae9-5b91-4598-9cbc-0f6003aac919.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\ef8ab47d-837d-4d51-a0e2-11ed93a61b9f.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\ef8ab47d-837d-4d51-a0e2-11ed93a61b9f.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\f0c15e8e-a2dc-41d1-90f3-70fa74383017.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\f0c15e8e-a2dc-41d1-90f3-70fa74383017.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\categories\\f2148e9f-d0c4-4aaa-b0c9-ca5ce1a818f6.png",
+      "PackagePath": "staticwebassets\\uploads\\categories\\f2148e9f-d0c4-4aaa-b0c9-ca5ce1a818f6.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\05f99d8e-c4be-4657-9fd1-d1fce1af0115.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\05f99d8e-c4be-4657-9fd1-d1fce1af0115.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\085284e7-8afc-4cfa-954f-8e19bb66a425.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\085284e7-8afc-4cfa-954f-8e19bb66a425.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\0bab6c05-3a34-40f4-a03b-fcc5cb5a4f3e.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\0bab6c05-3a34-40f4-a03b-fcc5cb5a4f3e.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\0f0a85bf-ead9-4710-8f68-1c1e20d8fe08.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\0f0a85bf-ead9-4710-8f68-1c1e20d8fe08.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\0f3f9bff-8491-41c9-98c7-cd91c0391d41.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\0f3f9bff-8491-41c9-98c7-cd91c0391d41.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\11a17c3b-932f-4c67-b9c8-5e3a9b8fed08.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\11a17c3b-932f-4c67-b9c8-5e3a9b8fed08.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\16d056cc-f07b-4456-8b2d-68cb2f64d0d0.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\16d056cc-f07b-4456-8b2d-68cb2f64d0d0.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\1a7c1635-c483-41c2-a95a-a73e6d41387e.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\1a7c1635-c483-41c2-a95a-a73e6d41387e.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\1fb210e2-aef4-4142-93cd-6264bc74bb2f.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\1fb210e2-aef4-4142-93cd-6264bc74bb2f.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\25738ca7-afa3-4c5c-bcf6-b8a831f5cab1.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\25738ca7-afa3-4c5c-bcf6-b8a831f5cab1.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\2692ccc8-431b-43cc-96e6-0b1860dc562b.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\2692ccc8-431b-43cc-96e6-0b1860dc562b.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\28fb0027-0c78-4d52-95bc-2f750ee71fc6.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\28fb0027-0c78-4d52-95bc-2f750ee71fc6.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\360ed576-82b5-4998-b120-e2a0f1021e92.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\360ed576-82b5-4998-b120-e2a0f1021e92.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\39aa6bca-79ed-4a1a-b229-54b14d99fca6.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\39aa6bca-79ed-4a1a-b229-54b14d99fca6.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\3a632324-f0fb-4086-9e82-3a7e84749d01.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\3a632324-f0fb-4086-9e82-3a7e84749d01.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\3d0d707f-f669-48f8-a3ac-aca2006a9cca.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\3d0d707f-f669-48f8-a3ac-aca2006a9cca.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\40c636f3-a53f-4c6b-b642-ff010b8c0386.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\40c636f3-a53f-4c6b-b642-ff010b8c0386.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\42ccff4c-8a77-4b39-9cc3-47cc6895b6d9.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\42ccff4c-8a77-4b39-9cc3-47cc6895b6d9.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\4a2d01e0-6b56-4c8d-a6e7-360579844cf6.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\4a2d01e0-6b56-4c8d-a6e7-360579844cf6.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\4f3a65bb-c3f3-441f-88ee-8a1bee81312e.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\4f3a65bb-c3f3-441f-88ee-8a1bee81312e.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\5150ae5a-ae24-4c1f-b343-ef99d0c5f61a.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\5150ae5a-ae24-4c1f-b343-ef99d0c5f61a.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\5550e0ce-2f6b-481a-b215-1ed5b6879d02.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\5550e0ce-2f6b-481a-b215-1ed5b6879d02.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\59a33ec2-d8c4-408f-a8b4-0cfaba1c32bc.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\59a33ec2-d8c4-408f-a8b4-0cfaba1c32bc.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\5a193d37-8aaf-4c2a-84d1-0ead7f104b91.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\5a193d37-8aaf-4c2a-84d1-0ead7f104b91.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\6cfeb25f-c35e-4541-9856-06b905634c77.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\6cfeb25f-c35e-4541-9856-06b905634c77.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\73b7fd07-31f2-4c27-86bc-7bf7f6420573.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\73b7fd07-31f2-4c27-86bc-7bf7f6420573.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\7eb24cad-838e-47cd-b445-f9ec76eb9704.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\7eb24cad-838e-47cd-b445-f9ec76eb9704.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\7ffa2c61-127a-45fe-ba40-96c70cd35bb5.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\7ffa2c61-127a-45fe-ba40-96c70cd35bb5.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\864344df-64bb-4e7a-855c-e4ffc154dc4d.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\864344df-64bb-4e7a-855c-e4ffc154dc4d.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\88bf3e2c-c274-4dde-8f95-50ecca4f4a15.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\88bf3e2c-c274-4dde-8f95-50ecca4f4a15.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\8ee0822f-3d48-4df9-a995-af0cb2a898ac.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\8ee0822f-3d48-4df9-a995-af0cb2a898ac.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\8fea2950-e70f-4f77-82c5-bd820925ab5f.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\8fea2950-e70f-4f77-82c5-bd820925ab5f.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\908930a8-4ac0-4174-92a7-29520c53d665.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\908930a8-4ac0-4174-92a7-29520c53d665.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\90b1f181-f775-4635-bcd7-99676971e388.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\90b1f181-f775-4635-bcd7-99676971e388.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\90e5d8c6-84b5-4fef-b9ca-477ce69c8664.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\90e5d8c6-84b5-4fef-b9ca-477ce69c8664.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\9199e8e8-bfde-4b80-8785-4b588b2aa8e5.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\9199e8e8-bfde-4b80-8785-4b588b2aa8e5.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\920ace1c-92fc-4ec8-b3f4-7e352ed8613a.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\920ace1c-92fc-4ec8-b3f4-7e352ed8613a.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\93cf2736-6b39-42a6-90fe-29235c99a02d.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\93cf2736-6b39-42a6-90fe-29235c99a02d.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\96dfc6b1-631b-4451-a6a6-e3b96341f3c1.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\96dfc6b1-631b-4451-a6a6-e3b96341f3c1.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\988175ec-da4f-4909-ace8-f830fa8084b6.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\988175ec-da4f-4909-ace8-f830fa8084b6.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\aa47991f-7b23-4b5c-8de4-72924b195da5.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\aa47991f-7b23-4b5c-8de4-72924b195da5.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\aaccbf86-3559-448b-81b1-0dc7a321a19f.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\aaccbf86-3559-448b-81b1-0dc7a321a19f.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\ab739b85-f840-42cb-99e3-62bb7b7dab64.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\ab739b85-f840-42cb-99e3-62bb7b7dab64.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\ac2db772-e177-47f7-a5a1-dd675fe55150.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\ac2db772-e177-47f7-a5a1-dd675fe55150.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\c17889d3-fde2-43ad-a769-3ed3917d406c.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\c17889d3-fde2-43ad-a769-3ed3917d406c.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\c273893c-2ad4-49ae-8a90-a0db24e38e06.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\c273893c-2ad4-49ae-8a90-a0db24e38e06.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\c65e8092-052c-4381-a206-46ed32283eba.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\c65e8092-052c-4381-a206-46ed32283eba.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\c87c61da-4268-4f8e-b190-3a9c628dda7c.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\c87c61da-4268-4f8e-b190-3a9c628dda7c.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\cdb0456a-6f8b-4854-90bd-e3ac0776f608.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\cdb0456a-6f8b-4854-90bd-e3ac0776f608.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\de07b7ca-ae1b-4999-bc11-c6956f38dfc1.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\de07b7ca-ae1b-4999-bc11-c6956f38dfc1.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\e0630ae7-883c-4e2b-b479-2110ae08ff95.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\e0630ae7-883c-4e2b-b479-2110ae08ff95.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\e164667b-e294-47f7-bcf4-f80503ed8a1b.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\e164667b-e294-47f7-bcf4-f80503ed8a1b.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\e2ba219c-1c0d-4211-8621-04e1ff5adb85.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\e2ba219c-1c0d-4211-8621-04e1ff5adb85.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\e42e1d20-857d-44a9-8c8f-3538146d3154.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\e42e1d20-857d-44a9-8c8f-3538146d3154.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\e534a421-f073-46dc-9608-3f698735edcf.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\e534a421-f073-46dc-9608-3f698735edcf.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\e833cda3-4f70-47f7-a500-47eee8aed7f2.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\e833cda3-4f70-47f7-a500-47eee8aed7f2.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\ec27bde5-ac1a-4cfd-9894-25e98b0337b2.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\ec27bde5-ac1a-4cfd-9894-25e98b0337b2.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\f52d5661-1638-4588-8cbc-91560b2b0898.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\f52d5661-1638-4588-8cbc-91560b2b0898.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\uploads\\toys\\f6b98f2c-6190-4357-9e09-fa9e8aa15431.png",
+      "PackagePath": "staticwebassets\\uploads\\toys\\f6b98f2c-6190-4357-9e09-fa9e8aa15431.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\CSS\\commen.css",
+      "PackagePath": "staticwebassets\\user\\CSS\\commen.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\CSS\\index.css",
+      "PackagePath": "staticwebassets\\user\\CSS\\index.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\CSS\\login.css",
+      "PackagePath": "staticwebassets\\user\\CSS\\login.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\Images\\ballon2.png",
+      "PackagePath": "staticwebassets\\user\\Images\\ballon2.png"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\Images\\user.jpg",
+      "PackagePath": "staticwebassets\\user\\Images\\user.jpg"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\JS\\index.js",
+      "PackagePath": "staticwebassets\\user\\JS\\index.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\bootstrap Js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\user\\lib\\bootstrap Js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\bootstrap Js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\user\\lib\\bootstrap Js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\bootstrap css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\user\\lib\\bootstrap css\\bootstrap.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\bootstrap css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\user\\lib\\bootstrap css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\fontawesome\\all.min.css",
+      "PackagePath": "staticwebassets\\user\\lib\\fontawesome\\all.min.css"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\fontawesome\\all.min.js",
+      "PackagePath": "staticwebassets\\user\\lib\\fontawesome\\all.min.js"
+    },
+    {
+      "Id": "G:\\uploaded project\\Kids Toys\\Kids Toys\\wwwroot\\user\\lib\\fonts\\snap-itc.ttf",
+      "PackagePath": "staticwebassets\\user\\lib\\fonts\\snap-itc.ttf"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Kids Toys.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Kids Toys.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Kids Toys.props",
+      "PackagePath": "build\\Kids Toys.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Kids Toys.props",
+      "PackagePath": "buildMultiTargeting\\Kids Toys.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Kids Toys.props",
+      "PackagePath": "buildTransitive\\Kids Toys.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

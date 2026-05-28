@@ -1,0 +1,59 @@
+﻿@using Kids_Toys.ModelViews
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Sub Category";
+}
+
+@model CategoryToyMV
+
+<!-- Start breadcrumb -->
+<div class="info mt-3 mb-3 me-0">
+    <div class="container  d-flex align-items-center justify-content-between">
+        <div class="icon">
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+            </a>
+        </div>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Category">Categories</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.CategoryName</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- End breadcrumb -->
+<!-- Start header-Section -->
+<div class="header-section mt-5 mx-auto">
+    <div class="container">
+        <div class="header-box position-relative mx-auto">
+            <p>@Model.CategoryName</p>
+            <span class="position-absolute mt-2"></span>
+        </div>
+        <div class="header-desc">
+            <p>Discover Toys According to your Child's Age</p>
+        </div>
+    </div>
+</div>
+<!-- End header-Section -->
+<!-- Start divide Girls' age-->
+<div class="ages mt-5 pt-5">
+    <div class="container">
+        <div class="box-girls">
+            <div class="row box justify-content-center align-items-center gap-3">
+                    @foreach (var subSubCategory in @Model.SubSubCategories)
+                    {
+                            <div class="col col-5 col-md-3 mb-5">
+                                <div class="box-detail mx-auto text-center">
+                                    <p><a asp-controller="Home" asp-action="DefineAges" asp-route-name="@Model.CategoryName" asp-route-subName="@subSubCategory.Name">@subSubCategory.Name</a></p>
+                                </div>
+                            </div>
+                    }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End divide Girls' age-->

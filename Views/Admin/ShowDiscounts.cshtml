@@ -1,0 +1,281 @@
+﻿@using Kids_Toys.Models
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Show All Discounts";
+}
+@{
+    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+}
+@model List<Discount>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Discounts' List</h2>
+        <a class="btn btn-primary text-center" role="button" onclick="togglePopupAdd()">Add Discount</a>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Discount Amount</th>
+                <th>Discount Status</th>
+                <th>Started At</th>
+                <th>Ended At</th>
+                <th style="width:20%;">Manage Orders</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                 
+                  string formattedStartDate = @item.StartDate.ToString("yyyy-MM-ddTHH:mm");
+                  string formattedEndDate = @item.EndDate.ToString("yyyy-MM-ddTHH:mm");
+                  
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Code</td>
+                    <td>@item.Description</td>
+                    <td>@item.DiscountPercentage</td>
+                    @if(@item.Status == 1)
+                    {
+                        <td>Active</td>
+                    }
+                    else
+                    {
+                        <td>Unactive</td>
+                    } 
+                    <td>@formattedStartDate</td>
+                    <td>@formattedEndDate</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" onclick="togglePopupEdit(@item.Id)">Edit</a>
+                        @*Start Edit Cart*@
+                        <div id="discountEdit_@item.Id" class="popup ">
+                            <input type="hidden" asp-for="@item.Id" id="editID_@item.Id" readonly>
+                            <div class="mb-3">
+                                <label for="editDiscountCode_@item.Id" class="form-label">Discount Code</label>
+                                <input type="text" id="editDiscountCode_@item.Id" class="form-control" asp-for="@item.Code" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDiscountPercentage_@item.Id" class="form-label">Discount Percentage</label>
+                                <input type="text" id="editDiscountPercentage_@item.Id" class="form-control" asp-for="@item.DiscountPercentage" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDiscountDescription_@item.Id" class="form-label">Discount Description</label>
+                                <textarea id="editDiscountDescription_@item.Id" class="form-control" placeholder="Leave a Comment" rows="3" asp-for="@item.Description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDiscountStatus_@item.Id" class="form-label">Discount Status</label>
+                                <select type="text" id="editDiscountStatus_@item.Id" class="form-select" asp-for="@item.Status" required>
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">Unactive</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editStartedDate_@item.Id" class="form-label">Started At</label>
+                                <input type="datetime-local" id="editStartedDate_@item.Id" class="form-control" name="StartDate" value="@formattedStartDate" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="editEndedDate_@item.Id" class="form-label">Ended At</label>
+                                <input type="datetime-local" id="editEndedDate_@item.Id" class="form-control" name="EndDate" value="@formattedEndDate" required />
+                            </div>
+                            <div>
+                                <input class="formBtn" onclick="EditDiscount(@item.Id)" type="submit" value="Submit" />
+                                <input class="formBtn" type="reset" value="Reset" />
+                            </div>
+                        </div>
+                            @*End Edit Cart*@
+                            <a class="btn btn-danger" role="button" onclick="togglePopupDel(@item.Id)"> Delete</a>
+                            @*Start Delete Cart*@
+                            <div id="discountDelete_@item.Id" class="popup">
+                                <div>
+                                    <p style="padding:10px">Are you Sure that you want to delete @item.Id</p>
+                                    <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" readonly>
+                                    <div>
+                                        <input class="formBtn" onclick="DeleteDiscount(@item.Id)" type="submit" value="Submit" />
+                                        <input class="formBtn" type="reset" value="Reset" />
+                                    </div>
+                                </div>
+                            </div>
+                            @*End Delete Cart*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+@*Start Add Discount*@
+<div id="DiscountAdd" class="popup">
+        <div class="mb-3">
+            <label for="discountCode" class="form-label">Discount Code</label>
+            <input type="text" id="discountCode" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="discountPercentage" class="form-label">Discount Percentage</label>
+            <input type="text" id="discountPercentage" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="discountDescription" class="form-label">Discount Description</label>
+            <textarea id="discountDescription" class="form-control" placeholder="Leave a Comment" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="discountStatus" class="form-label">Discount Status</label>
+            <select type="text" id="discountStatus" class="form-select" required>
+                <option value="1" selected>Active</option>
+                <option value="0">Unactive</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="discountStartedDate" class="form-label">Started At</label>
+            <input type="datetime-local" id="discountStartedDate"  class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="discountEndedDate" class="form-label">Ended At</label>
+            <input type="datetime-local" id="discountEndedDate" class="form-control"  required />
+        </div>
+        <div>
+            <input class="formBtn" onclick="AddNewDiscount()" type="submit" value="Submit"/>
+            <input class="formBtn" type="reset" value="Reset"/>
+        </div>
+</div>
+@*End Add Discount*@
+
+
+    @section Scripts {
+    <script>
+           // Start Add Discount
+         function togglePopupAdd() {
+          const discountAdd = document.getElementById('DiscountAdd');
+          discountAdd.classList.toggle('show');
+          }
+
+           function AddNewDiscount() {
+            const code = document.getElementById('discountCode').value;
+            const description = document.getElementById('discountDescription').value;
+            const discountAmount = document.getElementById('discountPercentage').value;
+            const Status = document.getElementById('discountStatus').value;
+            const startedAt = document.getElementById('discountStartedDate').value;
+            const EndedAt = document.getElementById('discountEndedDate').value;
+            if (!startedAt || !EndedAt) {
+                alert("Please enter both start and end date.");
+                return;
+            }
+
+
+                const formData = new FormData();
+                formData.append("Code", code);
+                formData.append("Description", description);
+                formData.append("DiscountPercentage", discountAmount);
+                formData.append("Status", Status);
+                formData.append("StartDate", startedAt);
+                formData.append("EndDate", EndedAt);
+
+                fetch('/Admin/ManageDiscounts', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                togglePopupAdd();
+                location.reload();
+                alert("It is successful");
+
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+            // End Add Toy
+
+
+        // Start Edit Cart
+             function togglePopupEdit(id) {
+                   const DiscountEdit = document.getElementById('discountEdit_' + id);
+                   DiscountEdit.classList.toggle('show');
+            }
+
+
+           function EditDiscount(id) {
+                const code = document.getElementById('editDiscountCode_' + id).value;
+                const discountAmount = document.getElementById('editDiscountPercentage_' + id).value;
+                const description = document.getElementById('editDiscountDescription_' + id).value;
+                const Status = document.getElementById('editDiscountStatus_' + id).value;
+                const StartedAt = document.getElementById('editStartedDate_' + id).value;
+                const EndedAt = document.getElementById('editEndedDate_' + id).value;
+
+            const formData = new FormData();
+            formData.append("Id", id);
+            formData.append("Code", code);
+            formData.append("DiscountPercentage", discountAmount);
+            formData.append("Description", description);
+            formData.append("Status", Status);
+            formData.append("StartDate", StartedAt);
+            formData.append("EndDate", EndedAt);
+
+
+                fetch('/Admin/ManageDiscounts', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                togglePopupEdit(id);
+                location.reload();
+                alert("It is successful");
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Edit Cart
+
+                   // Start Delete Toy
+
+            function togglePopupDel(id) {
+                const DiscountDelete = document.getElementById('discountDelete_' + id);
+                DiscountDelete.classList.toggle('show');
+            }
+
+            function DeleteDiscount(id) {
+
+            const formData = new FormData();
+            formData.append("Id", id);
+
+            fetch('/Admin/DeleteDiscount', {
+                method: 'POST',
+               body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                togglePopupDel(id);
+                location.reload();
+                alert("It is successful");
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Delete Toy
+
+    </script>
+    }

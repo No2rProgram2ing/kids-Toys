@@ -1,0 +1,175 @@
+﻿@using Kids_Toys.ModelViews
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Home Page";
+}
+
+@model CategoryToyMV
+
+<!-- Start Categories -->
+<div class="categories mt-5">
+    <div class="container">
+        <p class="mb-4"><a asp-controller="Home" asp-action="Category">Categories</a></p>
+        <div class="row justify-content-between">
+            @foreach (var mainCategories in @Model.MainCategories)
+            {
+                <div class="col col-6 col-md-4 col-lg-2 mt-4 mt-md-0 mb-5 mb-lg-0">
+                    <div class="box position-relative">
+                        <div class="box-category position-relative">
+                            <div class="image">
+                                <img src="@mainCategories.Image" alt="">
+                            </div>
+                        </div>
+                        <p><a asp-controller="Home" asp-action="CategoryToies" asp-route-id="@mainCategories.Id" >@mainCategories.Name</a></p>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+<!-- Start New Toys -->
+<div class="girls mt-5 pt-5">
+    <div class="container">
+        <p class="mb-4"><a asp-controller="Home" asp-action="NewToies" >New</a></p>
+        <div class="row justify-content-between gap-4">
+            @foreach (var newToy in @Model.AllNew)
+            {
+                <div class="col col-5 col-md-3 col-lg-2  mb-5 mb-lg-0">
+                    <div class="box-toy position-relative">
+                        <div class="image">
+                            <img src="@newToy.Image" alt="...">
+                        </div>
+                        <div class="box-toy-detail p-2">
+                            <a asp-controller="Home" asp-action="ToyDetail" asp-route-id="@newToy.Id"><p class="mb-0">@newToy.Name</p></a>
+                            <div class="icons d-flex justify-content-between mt-2">
+                                <span class="fw-bold">@newToy.Price$</span>
+                                <span><i class="fa-regular fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <a class="position-absolute d-block button @(@newToy.Status == true ? "" : "notAvailable")" onclick="@(@newToy.Status == true ? "AddToCart(" + @newToy.Id + ")" : "")" >Add to Cart</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+    <!-- End New Toys -->
+    <!-- Start Girls -->
+    <div class="girls mt-5 pt-5">
+        <div class="container">
+            <p class="mb-4"><a asp-controller="Home" asp-action="SubCategory" asp-route-name="Girls">Girls</a></p>
+            <div class="row justify-content-between gap-4">
+                @foreach (var toy in @Model.GirlsToies)
+                {
+                    <div class="col col-5 col-md-3 col-lg-2  mb-5 mb-lg-0">
+                        <div class="box-toy position-relative">
+                            <div class="image">
+                                <img src="@toy.Image" alt="...">
+                            </div>
+                            <div class="box-toy-detail p-2">
+                                <a asp-controller="Home" asp-action="ToyDetail" asp-route-id="@toy.Id"><p class="mb-0">@toy.Name</p></a>
+                                <div class="icons d-flex justify-content-between mt-2">
+                                    <span class="fw-bold">@toy.Price $</span>
+                                    <span><i class="fa-regular fa-heart"></i></span>
+                                </div>
+                            </div>
+                        <a class="position-absolute d-block button @(@toy.Status == true ? "" : "notAvailable")" onclick="@(@toy.Status == true ? "AddToCart(" + @toy.Id + ")" : "")" >Add to Cart</a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+    <!-- End Girls -->
+    <!-- Start Boys -->
+    <div class="girls mt-5 pt-5">
+        <div class="container">
+            <p class="mb-4"><a asp-controller="Home" asp-action="SubCategory" asp-route-name="Boys">Boys</a></p>
+            <div class="row justify-content-between gap-4">
+                @foreach (var toy in @Model.BoysToies)
+                {
+                    <div class="col col-5 col-md-3 col-lg-2  mb-5 mb-lg-0">
+                        <div class="box-toy position-relative">
+                            <div class="image">
+                                <img src="@toy.Image" alt="...">
+                            </div>
+                            <div class="box-toy-detail p-2">
+                                <a asp-controller="Home" asp-action="ToyDetail" asp-route-id="@toy.Id"><p class="mb-0">@toy.Name</p></a>
+                                <div class="icons d-flex justify-content-between mt-2">
+                                    <span class="fw-bold">@toy.Price $</span>
+                                    <span><i class="fa-regular fa-heart"></i></span>
+                                </div>
+                            </div>
+                        <a class="position-absolute d-block button @(@toy.Status == true ? "" : "notAvailable")" onclick="@(@toy.Status == true ? "AddToCart(" + @toy.Id + ")" : "")" >Add to Cart</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+    <!-- End Boys -->
+    <!-- Start Discount -->
+    <div class="girls mt-5 pt-5">
+        <div class="container">
+            <p class="mb-4"><a asp-controller="Home" asp-action="Discounts">Discounts</a></p>
+            <div id="multiItemCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="row justify-content-between gap-4">
+                    @foreach (var discount in @Model.AllDiscounts)
+                    {
+                        <div class="col col-5 col-md-3 col-lg-2  mb-5 mb-lg-0">
+                            <div class="box-toy position-relative">
+                                <div class="image">
+                                    <img src="@discount.Image" alt="...">
+                                </div>
+                                <div class="box-toy-detail p-2">
+                                    <a asp-controller="Home" asp-action="ToyDetail" asp-route-id="@discount.Id"><p class="mb-0">@discount.Name</p></a>                                    
+                                    <div class="icons d-flex justify-content-between mt-2">
+                                        <div class="price d-flex justify-content-start">
+                                            <span class="fw-bold pe-2 ">@discount.Price$</span>
+                                            <span class="fw-bold ps-2">@(@discount.Price - @discount.Discount)$</span>
+                                        </div>
+                                        <span><i class="fa-regular fa-heart"></i></span>
+                                    </div>
+                                </div>
+                        <a class="position-absolute d-block button @(@discount.Status == true ? "" : "notAvailable")" onclick="@(@discount.Status == true ? "AddToCart(" + @discount.Id + ")" : "")" >Add to Cart</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Discounts -->
+    <!-- Start Comment Section-->
+    <div class="testimonials mt-5 pb-5 pt-5">
+        <div class="container">
+            <p class="mb-4"><a href="">Testimonials</a></p>
+            <div class="row justify-content-center justify-content-md-between">
+                @foreach(var comment in @Model.Comments)
+                {
+                 <div class="col col-10 col-md-4 col-lg-3 mb-4 mb-lg-0">
+                    <div class="testi-box p-4 ">
+                        <p class="pb-3">@comment.ToyComment</p>
+                        <div class="account d-flex justify-content-start align-items-center">
+                            <div class="image me-3">
+                                <img src="~/user/Images/user.jpg" alt="">
+                            </div>
+                            <div class="user">
+                                <p class="name mb-0">Asma'a Ali</p>
+                                <p class="username mb-0">@comment.UpdatedAt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Start Comment Section-->

@@ -1,0 +1,374 @@
+﻿@using Kids_Toys.Services
+@inject ICartService _cartService
+@{
+    var cartItems = _cartService.GetCartItems();
+    var totalAmount = _cartService.GetCartTotalAmount();
+    var categories = _cartService.GetParentCategories();
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/user/lib/fonts/snap.ttf">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/user/lib/fontawesome/all.min.css">
+    <link rel="stylesheet" href="~/user/lib/bootstrap css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/user/CSS/commen.css">
+    <link rel="stylesheet" href="~/user/CSS/login.css">
+    <link rel="stylesheet" href="~/user/CSS/index.css">
+    <title>@ViewData["Title"] - Kids_Toys</title>
+</head>
+<body>
+    <!-- Start Nav bar -->
+    <nav class="navbar sticky-top navbar-expand-lg ">
+        <div class="container">
+            <div class="logo me-4">
+                <p class="fw-bold fs-6 position-relative">
+                    <i class="fa-solid fa-child-dress position-absolute"></i>
+                    <i class="fa-solid fa-face-grin-beam position-absolute"></i>
+                    <i class="fa-solid fa-child position-absolute"></i>
+                    Child's Laugh
+                </p>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link kid-link active" data-active="home" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link kid-link" data-active="aboutUs" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle kid-link" data-active="categories" asp-controller="Home" asp-action="Category" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                        @foreach(var item in categories)
+                        {
+                           <li><a class="dropdown-item" asp-controller="Home" asp-action="CategoryToies" asp-route-id="@item.Id" >@item.Name</a></li>
+                        }
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link kid-link" aria-current="page" data-active="contactUs" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                    </li>                  
+                </ul>
+                <div class="d-lg-flex">
+                    <ul class="d-lg-flex align-items-center">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link" aria-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                    <i class="fa-solid fa-cart-shopping me-5 d-block d-lg-inline mb-3 mb-lg-0"></i>
+                                </a>
+
+                                <div class="dropdown-menu p-4 cart cart-form">
+                                    @if (cartItems != null && cartItems.Any())
+                                    {
+                                        <div class="cart-details">
+                                            @foreach (var item in cartItems)
+                                            {
+                                                <div class="cart-detail pb-2 d-flex justify-content-between align-items-center">
+                                                    <a onclick="RemoveFromCart(@item.Id)"><i class="fa-solid fa-close" style="color: #aaa;cursor:pointer;"></i></a>
+                                                    <div class="control-buttons d-flex justify-content-start align-items-center">
+                                                        <a onclick="IncreaseQuantity(@item.Id)" class="me-2" style="cursor:pointer;" >+</a>
+                                                        <span class="me-2" >@item.Quentity</span>
+                                                        <a onclick="DecreaseQuantity(@item.Id)" style="cursor:pointer;">-</a>
+                                                    </div>
+                                                    <p>@item.Toy.Name</p>
+                                                    <div class="price fw-bold">@item.Price $</div>
+
+                                                </div>
+                                            }
+                                            <div class="sum pt-3">
+                                                <p>Sum = <span id="totalAmount">@totalAmount $</span></p>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="mt-3" onclick="togglePopupOrder()">Order Now</button>
+                                    }
+                                    else
+                                    {
+                                        <p style="color:#aaa;">You have not selected toys yet.</p>
+                                    }
+                                </div>
+                                
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-5" aria-current="page" href="#"><i class="fa-solid fa-search"></i></a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Nav bar -->
+    @RenderBody()
+
+
+    <!-- Start Footer Section -->
+    <div class="footer-section mt-5 px-3">
+        <div class="container">
+            <div class="logo me-4">
+                <p class="fw-bold fs-6 position-relative">
+                    <i class="fa-solid fa-child-dress position-absolute"></i>
+                    <i class="fa-solid fa-face-grin-beam position-absolute"></i>
+                    <i class="fa-solid fa-child position-absolute"></i>
+                    Child's Laugh
+                </p>
+            </div>
+            <div class="footer-info">
+                <div class="discover">
+                    <p>Discover</p>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Books</a></li>
+                        <li><a href="">Authors</a></li>
+                    </ul>
+                </div>
+                <div class="support">
+                    <p>Support</p>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Policies</a></li>
+                        <li><a href="">Privacy</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="follow-us">
+                    <p>Follow Us On</p>
+                    <ul>
+                        <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copy-right">It has been Developed by Noor &copy;2025</p>
+        </div>
+    </div>
+    <!-- End Footer Section -->
+    @*Start Add Category*@
+    <div id="addOrder" class="popup">
+
+        <div class="mb-3">
+            <label for="shippingAddress" class="form-label">Shipping Address</label>
+            <input type="text" id="shippingAddress" class="form-control" placeholder="shipping Address" required />
+        </div>
+        <div class="mb-3">
+            <label for="paymentMethod" class="form-label">Payment Method</label>
+            <select type="text" id="paymentMethod" class="form-select" required>
+                <option value="0" selected>Cash</option>
+                <option value="1">PayPal</option>
+            </select>
+        </div>
+        <input type="hidden" id="Status" class="form-control" value="1" required />
+        <div>
+            <input class="formBtn" type="submit" onclick="AddNewOrder()" value="Submit" />
+            <input class="formBtn" type="reset" value="Reset" />
+        </div>
+    </div>
+    @*End Add Order*@
+
+
+    <script>
+        // Start Add Order
+             function togglePopupOrder() {
+                   const AddOrder = document.getElementById('addOrder');
+                   AddOrder.classList.toggle('show');
+            }
+
+
+           function AddNewOrder() {
+                const shippingAddress = document.getElementById('shippingAddress').value;
+                const paymentMethod = document.getElementById('paymentMethod').value;
+                const Status = document.getElementById('Status').value;
+
+            const formData = new FormData
+            formData.append("TotalAmount", @totalAmount);
+            formData.append("shippingAddress", shippingAddress);
+            formData.append("PaymentMethod", paymentMethod);
+            formData.append("Status", Status);
+
+
+                fetch('/Home/AddOrder', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                togglePopupOrder(); 
+                location.reload();
+                alert("It is successful");
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Edit Order
+
+            // Start Add to cart
+            function AddToCart(id) {
+
+            const formData = new FormData();
+            formData.append("Id", id);
+
+
+                fetch('/Home/AddToCart', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {                
+                if (response.status === 401) {
+                alert("You must be logged in to leave a comment.");
+                window.location.href = "/Identity/Account/Login"; 
+                return;     
+                }
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                location.reload();
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Add to cart
+
+
+            // Start Increase Quantity
+
+                function IncreaseQuantity(id) {
+
+            const formData = new FormData
+            formData.append("Id", id);
+
+
+                fetch('/Home/IncreaseQuantity', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                location.reload();
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Increase Quantity
+
+            // Start Decrease Quantity
+
+            function DecreaseQuantity(id) {
+
+            const formData = new FormData
+            formData.append("Id", id);
+
+
+                fetch('/Home/DecreaseQuantity', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                location.reload();
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Decrease Quantity
+
+
+            // Start Remove To Cart
+
+            function RemoveFromCart(id) {
+
+            const formData = new FormData
+            formData.append("Id", id);
+
+
+                fetch('/Home/RemoveFromCart', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // It is unsuccessful State
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                location.reload();
+            })
+            .catch(err => {
+                console.error('It is an error', err);
+                alert('An error has happened');
+            })
+            }
+
+            // End Remove To cart
+
+            // Start Header Section
+
+            const lis = document.querySelectorAll(".navbar .container .navbar-nav li .kid-link");
+
+            const activeLink = localStorage.getItem("activeNavLink");
+            if (activeLink) {
+                lis.forEach((li) => {
+                    if (li.getAttribute("data-active") === activeLink) {
+                        li.classList.add("active");
+                    } else {
+                        li.classList.remove("active");
+                    }
+                });
+            }
+
+
+            lis.forEach((li) => {
+                li.addEventListener("click", () => {
+                    lis.forEach((li) => li.classList.remove("active"));
+
+                    li.classList.add("active");
+
+                    const dataActive = li.getAttribute("data-active");
+                    localStorage.setItem("activeNavLink", dataActive);
+                });
+            });
+
+
+            // End Header Section
+
+    </script>
+
+    <script src="~/user/lib/fontawesome/all.min.js"></script>
+    <script src="~/user/lib/bootstrap Js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

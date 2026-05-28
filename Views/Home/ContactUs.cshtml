@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Contact Us";
+}
+
+
+  <!-- Start breadcrumb -->
+  <div class="info mt-3 mb-3 me-0">
+    <div class="container  d-flex align-items-center justify-content-between">
+      <div class="icon">
+        <a href="../HTML/index.html">
+          <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+        </a>
+      </div>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" >Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- End breadcrumb -->
+
+  <!-- Start header-Section -->
+  <div class="header-section mt-5 mx-auto">
+    <div class="container">
+      <div class="header-box position-relative mx-auto">
+        <p>Contact Us</p>
+        <span class="position-absolute mt-2"></span>
+      </div>
+      <div class="header-desc">
+        <p>Contact Us Whenever you Feel Like it, donot Hesitate to do So.</p>
+      </div>
+    </div>
+  </div>
+  <!-- End header-Section -->
+
+  <!-- Start Contact Form -->
+  <div class="contact-form my-5 py-5">
+    <div class="container">
+      <form action="">
+        <div class="mb-3">
+          <input type="text" placeholder="Enter your Email" class="form-control py-2">
+        </div>
+        <div class="mb-3">
+          <input type="text" placeholder="Subject" class="form-control py-2">
+        </div>
+        <div class="mb-3">
+          <textarea type="text" class="form-control" name="" id="" rows="4" placeholder="Type your Message"></textarea>
+        </div>
+        <div class="mb-3">
+          <a href="">Submit</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- End Contact Form -->

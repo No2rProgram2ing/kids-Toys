@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/user/lib/fonts/snap.ttf">
+    <link rel="stylesheet" href="~/user/lib/fontawesome/all.min.css">
+    <link rel="stylesheet" href="~/user/lib/bootstrap css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/user/CSS/commen.css">
+    <link rel="stylesheet" href="~/user/CSS/login.css">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    @RenderBody()
+
+    <script src="~/user/lib/fontawesome/all.min.js"></script>
+    <script src="~/user/lib/bootstrap Js/bootstrap.bundle.min.js"></script>
+    <script src="~/user/JS/index.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

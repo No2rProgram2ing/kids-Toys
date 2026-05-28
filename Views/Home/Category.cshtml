@@ -1,0 +1,61 @@
+﻿@using Kids_Toys.ModelViews
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Categories";
+}
+
+@model CategoryToyMV
+ <!-- Start breadcrumb -->
+    <div class="info mt-3 mb-3 me-0">
+        <div class="container  d-flex align-items-center justify-content-between">
+            <div class="icon">
+                <a href="../HTML/index.html">
+                    <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+                </a>
+            </div>
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- End breadcrumb -->
+
+    <!-- Start header-Section -->
+    <div class="header-section mt-5 mx-auto">
+        <div class="container">
+            <div class="header-box position-relative mx-auto">
+                <p>Categories</p>
+                <span class="position-absolute mt-2"></span>
+            </div>
+            <div class="header-desc">
+                <p>Discover The Most Toys' Categories Asked For</p>
+            </div>
+        </div>
+    </div>
+    <!-- End header-Section -->
+
+      <!-- Start Categories -->
+  <div class="categories mt-5 pt-5">
+    <div class="container">
+      <div class="row justify-content-start gap-6">
+            @foreach(var item in @Model.MainCategories)
+            {
+                 <div class="col col-6 col-md-4 col-lg-2 mb-5 pb-4">
+                  <div class="box position-relative">
+                    <div class="box-category position-relative">
+                      <div class="image">
+                        <img src="@item.Image" alt="">
+                      </div>
+                    </div>
+                    <p><a asp-controller="Home" asp-action="CategoryToies" asp-route-id="@item.Id" >@item.Name</a></p>
+                  </div>
+                </div>                
+            }
+      </div>
+    </div>
+  </div>
+  <!-- End Categories -->

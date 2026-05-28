@@ -1,0 +1,55 @@
+﻿@using Kids_Toys.ModelViews
+
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "About Us";
+}
+
+
+    <!-- Start breadcrumb -->
+    <div class="info mt-3 mb-3 me-0">
+        <div class="container  d-flex align-items-center justify-content-between">
+            <div class="icon">
+                <a href="../HTML/index.html">
+                    <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+                </a>
+            </div>
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" >Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- End breadcrumb -->
+
+    <!-- Start header-Section -->
+    <div class="header-section my-5 mx-auto about-us pb-5 ">
+        <div class="container">
+            <div class="header-box position-relative mx-auto">
+                <p>About Us</p>
+                <span class="position-absolute mt-2"></span>
+            </div>
+            <div class="about-us my-5">
+                <div class="logo text-center mx-auto">
+                    <p class="fw-bold fs-2 position-relative">
+                        <i class="fa-solid fa-child-dress position-absolute fs-1"></i>
+                        <i class="fa-solid fa-face-grin-beam position-absolute fs-2"></i>
+                        <i class="fa-solid fa-child position-absolute fs-1"></i>
+                        Child's Laugh
+                    </p>
+                </div>
+            </div>
+            <div class="header-desc ">
+                <p>
+                    Child's Laugh always works towards turn the dream of your childern to obtain any toy into reality.
+                    We make most toys available to them which are affordable and distinguishable.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End header-Section -->
+
+

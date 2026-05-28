@@ -1,0 +1,59 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Raleway;
+}
+
+h1 {
+    margin: 0;
+}
+.popup {
+    display: none;
+    border: 6px solid #6FB2C3;
+    padding: 2em;
+    width: 400px;
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1200;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    text-align: left;
+}
+
+
+.formBtn {
+    width: 140px;
+    display: inline;
+    background: #6FB2C3;
+    color: #fff;
+    font-weight: 100;
+    font-size: 1.2em;
+    border: none;
+    height: 30px;
+}
+
+.show {
+    display: flex;
+    opacity: 1;
+}

@@ -1,0 +1,199 @@
+﻿@using Kids_Toys.Models
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Show All Orders";
+}
+
+@model List<Order>
+
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Orders' List</h2>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>Total Amount</th>
+                <th>Shipping Address</th>
+                <th>Payment Method</th>
+                <th>Order Status</th>
+                <th>Discount Code</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th style="width:20%;">Manage Orders</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserId</td>
+                    <td>@item.TotalAmount</td>
+                    <td>@item.ShippingAddress</td>
+                    @if(@item.PaymentMethod == 0)
+                    {
+                        <td>Cash</td>
+                    }
+                    else
+                    {                        
+                        <td>PayPal</td>
+                    }
+                    @if(@item.Status == 1)
+                    {
+                        <td>Confirmed Order</td>
+                    }
+                    else if(@item.Status == 2) 
+                    {
+                        <td>Shipping Order</td>
+                    } else
+                    { 
+                        <td>Has Arrived</td>
+                    }                    
+                    <td>@item.DiscountId</td>
+                    <td>@item.CreatedAt</td>
+                    <td>@item.UpdatedAt</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" onclick="togglePopupEdit(@item.Id)">Edit</a>
+                        @*Start Edit Cart*@
+                        <div id="orderEdit_@item.Id" class="popup ">
+                            <input type="hidden" asp-for="@item.Id" id="editID_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.UserId" id="editUserId_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.TotalAmount" id="editTotalAmount_@item.Id" readonly>
+                            <input type="hidden" id="editDiscountId_@item.Id" value="@item.DiscountId" readonly>
+                            <input type="hidden" asp-for="@item.PaymentMethod" id="editPaymentMethod_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.ShippingAddress" id="editShippingAddress_@item.Id" readonly>
+                            <div class="mb-3">
+                                <label for="editOrderStatus_@item.Id" class="form-label">Order Status</label>
+                                <select type="text" id="editOrderStatus_@item.Id" class="form-select" asp-for="@item.Status" required>
+                                    <option value="1">Confirmed Order</option>
+                                    <option value="2">Shipping Order</option>
+                                    <option value="3">Has Arrived</option>
+                                </select>
+                            </div>
+
+                            <input type="hidden" asp-for="@item.CreatedAt" id="editCreatedAt_@item.Id" readonly>
+                            <input type="hidden"  asp-for="@item.UpdatedAt" id="editUpdatedAt_@item.Id" readonly>
+
+                                <div>
+                                    <input class="formBtn" onclick="EditOrder(@item.Id)" type="submit" value="Submit" />
+                                    <input class="formBtn" type="reset" value="Reset" />
+                                </div>
+                        </div>
+                        @*End Edit Cart*@
+
+                        <a class="btn btn-danger" role="button" onclick="togglePopupDel(@item.Id)"> Delete</a>
+                        @*Start Delete Cart*@
+                        <div id="orderDelete_@item.Id" class="popup">
+                            <div>
+                                <p style="padding:10px">Are you Sure that you want to delete @item.Id</p>
+                                <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" readonly>
+                                <div>
+                                    <input class="formBtn" onclick="DeleteOrder(@item.Id)" type="submit" value="Submit" />
+                                    <input class="formBtn" type="reset" value="Reset" />
+                                </div>
+                            </div>
+                        </div>
+                        @*End Delete Cart*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+@section Scripts {
+<script>
+
+    // Start Edit Cart
+         function togglePopupEdit(id) {
+               const OrderEdit = document.getElementById('orderEdit_' + id);
+               OrderEdit.classList.toggle('show');
+        }
+
+
+       function EditOrder(id) {
+
+            const UserId = document.getElementById('editUserId_' + id).value;
+            const TotalAmount = document.getElementById('editTotalAmount_' + id).value;
+            const PaymentMethod = document.getElementById('editPaymentMethod_' + id).value;
+            const ShippingAddress = document.getElementById('editShippingAddress_' + id).value;
+            const Status = document.getElementById('editOrderStatus_' + id).value;
+            const DiscountId = document.getElementById('editDiscountId_' + id).value;
+            const CreatedAt = document.getElementById('editCreatedAt_' + id).value;
+            const UpdatedAt = document.getElementById('editUpdatedAt_' + id).value;
+
+        const formData = new FormData
+        formData.append("Id", id);
+        formData.append("UserId", UserId);
+        formData.append("TotalAmount", TotalAmount);
+        formData.append("PaymentMethod", PaymentMethod);
+        formData.append("ShippingAddress", ShippingAddress);
+        formData.append("Status", Status);
+        formData.append("DiscountId", DiscountId);
+        formData.append("CreatedAt", CreatedAt);
+        formData.append("UpdatedAt", UpdatedAt);
+
+
+            fetch('/Admin/ManageOrders', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupEdit(id); 
+            location.reload();
+            alert("It is successful");
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Edit Cart
+
+               // Start Delete Toy
+
+        function togglePopupDel(id) {
+            const OrderDelete = document.getElementById('orderDelete_' + id);
+            OrderDelete.classList.toggle('show');
+        }
+
+        function DeleteOrder(id) {
+
+        const formData = new FormData
+        formData.append("Id", id);
+
+        fetch('/Admin/DeleteOrder', {
+            method: 'POST',
+           body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupDel(id); 
+            location.reload();
+            alert("It is successful");
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Delete Toy
+
+</script>
+}

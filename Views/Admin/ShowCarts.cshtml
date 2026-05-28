@@ -1,0 +1,171 @@
+﻿@using Kids_Toys.Models
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Show All Carts";
+}
+
+@model List<Cart>
+
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Cart List</h2>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>Cart Status</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th style="width:20%;">Manage Carts</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserId</td>
+                    @if(@item.Status == 1)
+                    {
+                        <td>Active</td>
+                    }
+                    else if(@item.Status == 0) 
+                    {
+                        <td>Unactive</td>
+                    } else
+                    { 
+                        <td>Has Ordered</td>
+                    }
+                    <td>@item.CreatedAt</td>
+                    <td>@item.UpdatedAt</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" onclick="togglePopupEdit(@item.Id)">Edit</a>
+                        @*Start Edit Cart*@
+                        <div id="cartEdit_@item.Id" class="popup ">
+                            <input type="hidden" asp-for="@item.Id" id="editID_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.UserId" id="editUserId_@item.Id" readonly>
+
+                            <div class="mb-3">
+                                <label for="editCartStatus_@item.Id" class="form-label">Cart Status</label>
+                                <select type="text" id="editCartStatus_@item.Id" class="form-select" asp-for="@item.Status" required>
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">Unactive</option>
+                                    <option value="2">Has Ordered</option>
+                                </select>
+                            </div>
+                            <input type="hidden" asp-for="@item.CreatedAt" id="editCreatedAt_@item.Id" readonly>
+                            <input type="hidden"  asp-for="@item.UpdatedAt" id="editUpdatedAt_@item.Id" readonly>
+
+                                <div>
+                                    <input class="formBtn" onclick="EditCart(@item.Id)" type="submit" value="Submit" />
+                                    <input class="formBtn" type="reset" value="Reset" />
+                                </div>
+                        </div>
+                        @*End Edit Cart*@
+                        <a class="btn btn-danger" role="button" onclick="togglePopupDel(@item.Id)"> Delete</a>
+                        @*Start Delete Cart*@
+                        <div id="cartDelete_@item.Id" class="popup">
+                            <div>
+                                <p style="padding:10px">Are you Sure that you want to delete @item.Id</p>
+                                <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" readonly>
+                                <div>
+                                    <input class="formBtn" onclick="DeleteCart(@item.Id)" type="submit" value="Submit" />
+                                    <input class="formBtn" type="reset" value="Reset" />
+                                </div>
+                            </div>
+                        </div>
+                        @*End Delete Cart*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+@section Scripts {
+<script>
+
+    // Start Edit Cart
+         function togglePopupEdit(id) {
+               const CartEdit = document.getElementById('cartEdit_' + id);
+               CartEdit.classList.toggle('show');
+        }
+
+
+       function EditCart(id) {
+            const UserId = document.getElementById('editUserId_' + id).value;
+            const Status = document.getElementById('editCartStatus_' + id).value;
+            const CreatedAt = document.getElementById('editCreatedAt_' + id).value;
+            const UpdatedAt = document.getElementById('editUpdatedAt_' + id).value;
+
+        const formData = new FormData
+        formData.append("Id", id);
+        formData.append("UserId", UserId);
+        formData.append("Status", Status);
+        formData.append("CreatedAt", CreatedAt);
+        formData.append("UpdatedAt", UpdatedAt);
+
+
+            fetch('/Admin/ManageCarts', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupEdit(id); 
+            location.reload();
+            alert("It is successful");
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Edit Cart
+
+               // Start Delete Cart
+
+        function togglePopupDel(id) {
+            const CartDelete = document.getElementById('cartDelete_' + id);
+            CartDelete.classList.toggle('show');
+        }
+
+        function DeleteCart(id) {
+
+        const formData = new FormData
+        formData.append("Id", id);
+
+        fetch('/Admin/DeleteCart', {
+            method: 'POST',
+           body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupDel(id); 
+            location.reload();
+            alert("It is successful");
+
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Delete Cart
+
+</script>
+}

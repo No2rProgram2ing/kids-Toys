@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Users";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Users List</h2>
+    <table class="table table-bordered table-striped  text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Email</th>
+                <th>User Name</th>
+                <th>Manage Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.user.Email</td>
+                    <td>@item.user.UserName</td>
+                    <td>
+                        @foreach (var roleName in ViewBag.allRoles)
+                        {
+                            @if (@item.userRoles.Contains(roleName.ToString()))
+                            {
+                                <a class="btn btn-primary" href="/Admin/addRoleToUser/@item.user.Id/@roleName">@roleName</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-primary" href="/Admin/addRoleToUser/@item.user.Id/@roleName">@roleName</a>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

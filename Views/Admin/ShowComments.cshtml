@@ -1,0 +1,177 @@
+﻿@using Kids_Toys.Models
+@{
+    Layout = "_LayoutAdmin";
+
+    ViewData["Title"] = "Show All Comments";
+}
+
+@model List<Comment>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Orders' List</h2>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>Toy Name</th>
+                <th>Comment</th>
+                <th>Comment Status</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th style="width:20%;">Manage Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserId</td>
+                    <td>@item.Toy.Name</td>
+                    <td>@item.ToyComment</td>
+                    @if(@item.Status == 1)
+                    {
+                        <td>Active</td>
+                    }
+                    else
+                    {
+                        <td>Unactive</td>
+                    }
+                    <td>@item.CreatedAt</td>
+                    <td>@item.UpdatedAt</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" onclick="togglePopupEdit(@item.Id)">Edit</a>
+                        @*Start Edit Comment*@
+                        <div id="commentEdit_@item.Id" class="popup ">
+                            <input type="hidden" asp-for="@item.Id" id="editID_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.UserId" id="editUserId_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.ToyId" id="editToyId_@item.Id" readonly>
+                            <input type="hidden" asp-for="@item.ToyComment" id="editComment_@item.Id" readonly>
+                            <div class="mb-3">
+                                <label for="editCommentStatus_@item.Id" class="form-label">Comment Status</label>
+                                <select type="text" id="editCommentStatus_@item.Id" class="form-select" asp-for="@item.Status" required>
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">Unactive</option>
+                                </select>
+                            </div>
+                            <input type="hidden" asp-for="@item.CreatedAt" id="editCreatedAt_@item.Id" readonly>
+                            <input type="hidden"  asp-for="@item.UpdatedAt" id="editUpdatedAt_@item.Id" readonly>
+
+                                <div>
+                                    <input class="formBtn" onclick="EditComment(@item.Id)" type="submit" value="Submit" />
+                                    <input class="formBtn" type="reset" value="Reset" />
+                                </div>
+                        </div>
+                        @*End Edit Comment*@
+
+                        <a class="btn btn-danger" role="button" onclick="togglePopupDel(@item.Id)"> Delete</a>
+                        @*Start Delete Comment*@
+                        <div id="commentDelete_@item.Id" class="popup">
+                            <div>
+                                <p style="padding:10px">Are you Sure that you want to delete @item.Id</p>
+                                <input type="hidden" asp-for="@item.Id" id="ID_@item.Id" readonly>
+                                <div>
+                                    <input class="formBtn" onclick="DeleteComment(@item.Id)" type="submit" value="Submit" />
+                                    <input class="formBtn" type="reset" value="Reset" />
+                                </div>
+                            </div>
+                        </div>
+                        @*End Delete Comment*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+@section Scripts {
+<script>
+
+    // Start Edit Comment
+         function togglePopupEdit(id) {
+               const commentEdit = document.getElementById('commentEdit_' + id);
+               commentEdit.classList.toggle('show');
+        }
+
+
+       function EditComment(id) {
+            const UserId = document.getElementById('editUserId_' + id).value;
+            const ToyId = document.getElementById('editToyId_' + id).value;
+            const Comment = document.getElementById('editComment_' + id).value;
+            const Status = document.getElementById('editCommentStatus_' + id).value;
+            const CreatedAt = document.getElementById('editCreatedAt_' + id).value;
+            const UpdatedAt = document.getElementById('editUpdatedAt_' + id).value;
+
+        const formData = new FormData
+        formData.append("Id", id);
+        formData.append("UserId", UserId);
+        formData.append("ToyId", ToyId);
+        formData.append("ToyComment", Comment);
+        formData.append("Status", Status);
+        formData.append("CreatedAt", CreatedAt);
+        formData.append("UpdatedAt", UpdatedAt);
+
+
+            fetch('/Admin/ManageComments', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupEdit(id); 
+            location.reload();
+            alert("It is successful");
+
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Edit Comment
+
+               // Start Delete Comment
+
+        function togglePopupDel(id) {
+            const CommentDelete = document.getElementById('commentDelete_' + id);
+            CommentDelete.classList.toggle('show');
+        }
+
+        function DeleteComment(id) {
+
+        const formData = new FormData
+        formData.append("Id", id);
+
+        fetch('/Admin/DeleteComment', {
+            method: 'POST',
+           body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                // It is unsuccessful State
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            togglePopupDel(id); 
+            location.reload();
+            alert("It is successful");
+
+        })
+        .catch(err => {
+            console.error('It is an error', err);
+            alert('An error has happened');
+        })
+        }
+
+        // End Delete Comment
+
+</script>
+}
